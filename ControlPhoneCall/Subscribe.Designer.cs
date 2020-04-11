@@ -32,22 +32,27 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.button1 = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.idSubscriberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.numberPhoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.iNNDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.subscribersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.phoneCallDataSet = new ControlPhoneCall.PhoneCallDataSet();
 			this.textBoxAddress = new System.Windows.Forms.TextBox();
 			this.textBoxRateDay = new System.Windows.Forms.TextBox();
 			this.textBoxCity = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
-			this.phoneCallDataSet = new ControlPhoneCall.PhoneCallDataSet();
-			this.subscribersBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.subscribersTableAdapter = new ControlPhoneCall.PhoneCallDataSetTableAdapters.SubscribersTableAdapter();
-			this.idSubscriberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.numberPhoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.iNNDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.phoneCallDataSet14 = new ControlPhoneCall.PhoneCallDataSet14();
+			this.subscribersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+			this.subscribersTableAdapter1 = new ControlPhoneCall.PhoneCallDataSet14TableAdapters.SubscribersTableAdapter();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.phoneCallDataSet)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.subscribersBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.phoneCallDataSet)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.phoneCallDataSet14)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.subscribersBindingSource1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label4
@@ -63,7 +68,7 @@
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(674, 603);
+			this.button1.Location = new System.Drawing.Point(604, 493);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(127, 64);
 			this.button1.TabIndex = 16;
@@ -80,11 +85,49 @@
             this.numberPhoneDataGridViewTextBoxColumn,
             this.iNNDataGridViewTextBoxColumn,
             this.addressDataGridViewTextBoxColumn});
-			this.dataGridView1.DataSource = this.subscribersBindingSource;
+			this.dataGridView1.DataSource = this.subscribersBindingSource1;
 			this.dataGridView1.Location = new System.Drawing.Point(90, 298);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.Size = new System.Drawing.Size(449, 259);
 			this.dataGridView1.TabIndex = 15;
+			this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.DataGridView1_CellValidating);
+			this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellValueChanged);
+			this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.DataGridView1_DataError);
+			// 
+			// idSubscriberDataGridViewTextBoxColumn
+			// 
+			this.idSubscriberDataGridViewTextBoxColumn.DataPropertyName = "IdSubscriber";
+			this.idSubscriberDataGridViewTextBoxColumn.HeaderText = "IdSubscriber";
+			this.idSubscriberDataGridViewTextBoxColumn.Name = "idSubscriberDataGridViewTextBoxColumn";
+			this.idSubscriberDataGridViewTextBoxColumn.ReadOnly = true;
+			// 
+			// numberPhoneDataGridViewTextBoxColumn
+			// 
+			this.numberPhoneDataGridViewTextBoxColumn.DataPropertyName = "NumberPhone";
+			this.numberPhoneDataGridViewTextBoxColumn.HeaderText = "NumberPhone";
+			this.numberPhoneDataGridViewTextBoxColumn.Name = "numberPhoneDataGridViewTextBoxColumn";
+			// 
+			// iNNDataGridViewTextBoxColumn
+			// 
+			this.iNNDataGridViewTextBoxColumn.DataPropertyName = "INN";
+			this.iNNDataGridViewTextBoxColumn.HeaderText = "INN";
+			this.iNNDataGridViewTextBoxColumn.Name = "iNNDataGridViewTextBoxColumn";
+			// 
+			// addressDataGridViewTextBoxColumn
+			// 
+			this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
+			this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
+			this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+			// 
+			// subscribersBindingSource
+			// 
+			this.subscribersBindingSource.DataMember = "Subscribers";
+			this.subscribersBindingSource.DataSource = this.phoneCallDataSet;
+			// 
+			// phoneCallDataSet
+			// 
+			this.phoneCallDataSet.DataSetName = "PhoneCallDataSet";
+			this.phoneCallDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
 			// 
 			// textBoxAddress
 			// 
@@ -137,44 +180,23 @@
 			this.label1.TabIndex = 9;
 			this.label1.Text = "Номер телефона";
 			// 
-			// phoneCallDataSet
-			// 
-			this.phoneCallDataSet.DataSetName = "PhoneCallDataSet";
-			this.phoneCallDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-			// 
-			// subscribersBindingSource
-			// 
-			this.subscribersBindingSource.DataMember = "Subscribers";
-			this.subscribersBindingSource.DataSource = this.phoneCallDataSet;
-			// 
 			// subscribersTableAdapter
 			// 
 			this.subscribersTableAdapter.ClearBeforeFill = true;
 			// 
-			// idSubscriberDataGridViewTextBoxColumn
+			// phoneCallDataSet14
 			// 
-			this.idSubscriberDataGridViewTextBoxColumn.DataPropertyName = "IdSubscriber";
-			this.idSubscriberDataGridViewTextBoxColumn.HeaderText = "IdSubscriber";
-			this.idSubscriberDataGridViewTextBoxColumn.Name = "idSubscriberDataGridViewTextBoxColumn";
-			this.idSubscriberDataGridViewTextBoxColumn.ReadOnly = true;
+			this.phoneCallDataSet14.DataSetName = "PhoneCallDataSet14";
+			this.phoneCallDataSet14.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
 			// 
-			// numberPhoneDataGridViewTextBoxColumn
+			// subscribersBindingSource1
 			// 
-			this.numberPhoneDataGridViewTextBoxColumn.DataPropertyName = "NumberPhone";
-			this.numberPhoneDataGridViewTextBoxColumn.HeaderText = "NumberPhone";
-			this.numberPhoneDataGridViewTextBoxColumn.Name = "numberPhoneDataGridViewTextBoxColumn";
+			this.subscribersBindingSource1.DataMember = "Subscribers";
+			this.subscribersBindingSource1.DataSource = this.phoneCallDataSet14;
 			// 
-			// iNNDataGridViewTextBoxColumn
+			// subscribersTableAdapter1
 			// 
-			this.iNNDataGridViewTextBoxColumn.DataPropertyName = "INN";
-			this.iNNDataGridViewTextBoxColumn.HeaderText = "INN";
-			this.iNNDataGridViewTextBoxColumn.Name = "iNNDataGridViewTextBoxColumn";
-			// 
-			// addressDataGridViewTextBoxColumn
-			// 
-			this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
-			this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
-			this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+			this.subscribersTableAdapter1.ClearBeforeFill = true;
 			// 
 			// Subscribe
 			// 
@@ -196,8 +218,10 @@
 			this.Text = "Subscribe";
 			this.Load += new System.EventHandler(this.Subscribe_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.phoneCallDataSet)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.subscribersBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.phoneCallDataSet)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.phoneCallDataSet14)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.subscribersBindingSource1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -221,5 +245,8 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn numberPhoneDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn iNNDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
+		private PhoneCallDataSet14 phoneCallDataSet14;
+		private System.Windows.Forms.BindingSource subscribersBindingSource1;
+		private PhoneCallDataSet14TableAdapters.SubscribersTableAdapter subscribersTableAdapter1;
 	}
 }

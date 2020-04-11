@@ -63,7 +63,7 @@ namespace ControlPhoneCall
 			adapter.Fill(tableConversation);
 			dataGridView2.DataSource = tableConversation;
 
-			dataGridView3.DataSource = 
+			
 		}
 
 		private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
