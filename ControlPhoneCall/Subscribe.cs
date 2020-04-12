@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using ControlPhoneCall.Model;
 
 namespace ControlPhoneCall
 {
@@ -20,65 +21,85 @@ namespace ControlPhoneCall
 
 		
 		string con = @"Data Source=localhost\SQLEXPRESS; Initial Catalog=PhoneCall; Integrated Security=true";
+		string commandString;
 		SqlConnection sqlConnection;
 		SqlCommand command;
+		SubscribeModel subscribeModel;
+
 
 
 
 		private void Subscribe_Load(object sender, EventArgs e)
 		{
-			// TODO: This line of code loads data into the 'phoneCallDataSet14.Subscribers' table. You can move, or remove it, as needed.
-			this.subscribersTableAdapter1.Fill(this.phoneCallDataSet14.Subscribers);
-			// TODO: This line of code loads data into the 'phoneCallDataSet.Subscribers' table. You can move, or remove it, as needed.
+			// TODO: This line of code loads data into the 'phoneCallDataSet15.Subscribers' table. You can move, or remove it, as needed.
+			this.subscribersTableAdapter2.Fill(this.phoneCallDataSet15.Subscribers);
 			//this.phoneCallDataSet.Subscribers.To
 
 		}
 
 		private void Button1_Click(object sender, EventArgs e)
 		{
-			Cursor.Current = Cursors.WaitCursor;
-			
-
-			string commandString = $@"INSERT INTO [dbo].[Subscribers]
+			subscribeModel = new SubscribeModel(textBoxNumber.Text, textBoxInn.Text, textBoxAddress.Text);
+			if (subscribeModel.validate(errorNumber, errorINN, errorAddress))
+			{
+				Cursor.Current = Cursors.WaitCursor;
+				sqlConnection = new SqlConnection(con);
+				if (idSubscriber.Text == "")
+				{
+					commandString = $@"INSERT INTO [dbo].[Subscribers]
 						   ([NumberPhone]
 						   ,[INN]
 						   ,[Address])
 					 VALUES(
-						   {textBoxCity.Text},
-							{textBoxCity.Text},
-							{textBoxCity.Text}
+						    '{subscribeModel.MobilePhone}',
+							'{subscribeModel.INN}',
+							'{subscribeModel.Address}')";
 
-			)";
+					try
+					{
+						sqlConnection.Open();
+					}
+					catch (Exception)
+					{
 
-			sqlConnection = new SqlConnection(con);
-			try
-			{
-				sqlConnection.Open();
+						MessageBox.Show("Не удалось подключиться");
+					}
+
+					command = new SqlCommand(commandString, sqlConnection);
+
+					command.ExecuteNonQuery();
+					this.subscribersTableAdapter2.Fill(this.phoneCallDataSet15.Subscribers);
+				}
+				else
+				{
+					commandString = $@"UPDATE [dbo].[Subscribers]
+								   SET [NumberPhone] = '{subscribeModel.MobilePhone}'
+									  ,[INN] = '{subscribeModel.INN}'
+									  ,[Address] = '{subscribeModel.Address}'
+								 WHERE IdSubscriber = '{idSubscriber.Text}'";
+					try
+					{
+						sqlConnection.Open();
+					}
+					catch (Exception)
+					{
+
+						MessageBox.Show("Не удалось подключиться");
+					}
+					command = new SqlCommand(commandString, sqlConnection);
+					command.ExecuteNonQuery();
+					this.subscribersTableAdapter2.Fill(this.phoneCallDataSet15.Subscribers);
+				}
+
+				idSubscriber.Text = "";
 			}
-			catch (Exception)
+			else
 			{
-
-				MessageBox.Show("Не удалось подключиться");
+				MessageBox.Show("Заполните данные");
 			}
 
-			command = new SqlCommand(commandString,sqlConnection);
 
-			command.ExecuteNonQuery();
-
-
-			try
-			{
-				this.subscribersTableAdapter1.Fill(this.phoneCallDataSet14.Subscribers);
-				//subscribersBindingSource1.EndEdit();
-
-				//subscribersTableAdapter1.Update(this.phoneCallDataSet14.Subscribers);
-
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("sdfsdf");
-			}
-			Cursor.Current = Cursors.Default;
+			
 			
 		}
 
@@ -99,16 +120,17 @@ namespace ControlPhoneCall
 			}
 		}
 
-		private void DataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-		{
-			
-			
-		}
+		
 
-		private void DataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+		private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
-			
-			
+			idSubscriber.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+			textBoxAddress.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+			textBoxInn.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+			textBoxNumber.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
 		}
 	}
+
+
+	
 }

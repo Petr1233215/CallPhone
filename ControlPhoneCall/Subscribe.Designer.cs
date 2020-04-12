@@ -36,23 +36,22 @@
 			this.numberPhoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.iNNDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.subscribersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.phoneCallDataSet = new ControlPhoneCall.PhoneCallDataSet();
 			this.textBoxAddress = new System.Windows.Forms.TextBox();
-			this.textBoxRateDay = new System.Windows.Forms.TextBox();
-			this.textBoxCity = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
-			this.subscribersTableAdapter = new ControlPhoneCall.PhoneCallDataSetTableAdapters.SubscribersTableAdapter();
-			this.phoneCallDataSet14 = new ControlPhoneCall.PhoneCallDataSet14();
-			this.subscribersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-			this.subscribersTableAdapter1 = new ControlPhoneCall.PhoneCallDataSet14TableAdapters.SubscribersTableAdapter();
+			this.errorNumber = new System.Windows.Forms.Label();
+			this.errorINN = new System.Windows.Forms.Label();
+			this.errorAddress = new System.Windows.Forms.Label();
+			this.textBoxNumber = new System.Windows.Forms.MaskedTextBox();
+			this.textBoxInn = new System.Windows.Forms.MaskedTextBox();
+			this.phoneCallDataSet15 = new ControlPhoneCall.PhoneCallDataSet15();
+			this.subscribersBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+			this.subscribersTableAdapter2 = new ControlPhoneCall.PhoneCallDataSet15TableAdapters.SubscribersTableAdapter();
+			this.idSubscriber = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.subscribersBindingSource)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.phoneCallDataSet)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.phoneCallDataSet14)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.subscribersBindingSource1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.phoneCallDataSet15)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.subscribersBindingSource2)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label4
@@ -68,7 +67,7 @@
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(604, 493);
+			this.button1.Location = new System.Drawing.Point(664, 580);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(127, 64);
 			this.button1.TabIndex = 16;
@@ -85,13 +84,12 @@
             this.numberPhoneDataGridViewTextBoxColumn,
             this.iNNDataGridViewTextBoxColumn,
             this.addressDataGridViewTextBoxColumn});
-			this.dataGridView1.DataSource = this.subscribersBindingSource1;
-			this.dataGridView1.Location = new System.Drawing.Point(90, 298);
+			this.dataGridView1.DataSource = this.subscribersBindingSource2;
+			this.dataGridView1.Location = new System.Drawing.Point(107, 385);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.Size = new System.Drawing.Size(449, 259);
 			this.dataGridView1.TabIndex = 15;
-			this.dataGridView1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.DataGridView1_CellValidating);
-			this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellValueChanged);
+			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
 			this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.DataGridView1_DataError);
 			// 
 			// idSubscriberDataGridViewTextBoxColumn
@@ -119,36 +117,13 @@
 			this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
 			this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
 			// 
-			// subscribersBindingSource
-			// 
-			this.subscribersBindingSource.DataMember = "Subscribers";
-			this.subscribersBindingSource.DataSource = this.phoneCallDataSet;
-			// 
-			// phoneCallDataSet
-			// 
-			this.phoneCallDataSet.DataSetName = "PhoneCallDataSet";
-			this.phoneCallDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-			// 
 			// textBoxAddress
 			// 
-			this.textBoxAddress.Location = new System.Drawing.Point(271, 224);
+			this.textBoxAddress.Location = new System.Drawing.Point(252, 227);
+			this.textBoxAddress.Multiline = true;
 			this.textBoxAddress.Name = "textBoxAddress";
-			this.textBoxAddress.Size = new System.Drawing.Size(100, 26);
+			this.textBoxAddress.Size = new System.Drawing.Size(304, 134);
 			this.textBoxAddress.TabIndex = 14;
-			// 
-			// textBoxRateDay
-			// 
-			this.textBoxRateDay.Location = new System.Drawing.Point(271, 173);
-			this.textBoxRateDay.Name = "textBoxRateDay";
-			this.textBoxRateDay.Size = new System.Drawing.Size(100, 26);
-			this.textBoxRateDay.TabIndex = 13;
-			// 
-			// textBoxCity
-			// 
-			this.textBoxCity.Location = new System.Drawing.Point(271, 115);
-			this.textBoxCity.Name = "textBoxCity";
-			this.textBoxCity.Size = new System.Drawing.Size(100, 26);
-			this.textBoxCity.TabIndex = 12;
 			// 
 			// label3
 			// 
@@ -180,35 +155,97 @@
 			this.label1.TabIndex = 9;
 			this.label1.Text = "Номер телефона";
 			// 
-			// subscribersTableAdapter
+			// errorNumber
 			// 
-			this.subscribersTableAdapter.ClearBeforeFill = true;
+			this.errorNumber.AutoSize = true;
+			this.errorNumber.ForeColor = System.Drawing.Color.Red;
+			this.errorNumber.Location = new System.Drawing.Point(414, 115);
+			this.errorNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.errorNumber.Name = "errorNumber";
+			this.errorNumber.Size = new System.Drawing.Size(142, 20);
+			this.errorNumber.TabIndex = 18;
+			this.errorNumber.Text = "Номер телефона";
+			this.errorNumber.Visible = false;
 			// 
-			// phoneCallDataSet14
+			// errorINN
 			// 
-			this.phoneCallDataSet14.DataSetName = "PhoneCallDataSet14";
-			this.phoneCallDataSet14.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+			this.errorINN.AutoSize = true;
+			this.errorINN.ForeColor = System.Drawing.Color.Coral;
+			this.errorINN.Location = new System.Drawing.Point(414, 173);
+			this.errorINN.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.errorINN.Name = "errorINN";
+			this.errorINN.Size = new System.Drawing.Size(36, 20);
+			this.errorINN.TabIndex = 19;
+			this.errorINN.Text = "INN";
+			this.errorINN.Visible = false;
 			// 
-			// subscribersBindingSource1
+			// errorAddress
 			// 
-			this.subscribersBindingSource1.DataMember = "Subscribers";
-			this.subscribersBindingSource1.DataSource = this.phoneCallDataSet14;
+			this.errorAddress.AutoSize = true;
+			this.errorAddress.ForeColor = System.Drawing.Color.Coral;
+			this.errorAddress.Location = new System.Drawing.Point(580, 227);
+			this.errorAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.errorAddress.Name = "errorAddress";
+			this.errorAddress.Size = new System.Drawing.Size(57, 20);
+			this.errorAddress.TabIndex = 20;
+			this.errorAddress.Text = "Адрес";
+			this.errorAddress.Visible = false;
 			// 
-			// subscribersTableAdapter1
+			// textBoxNumber
 			// 
-			this.subscribersTableAdapter1.ClearBeforeFill = true;
+			this.textBoxNumber.Location = new System.Drawing.Point(252, 115);
+			this.textBoxNumber.Mask = "+7(999) 000-00-00";
+			this.textBoxNumber.Name = "textBoxNumber";
+			this.textBoxNumber.Size = new System.Drawing.Size(143, 26);
+			this.textBoxNumber.TabIndex = 21;
+			// 
+			// textBoxInn
+			// 
+			this.textBoxInn.Location = new System.Drawing.Point(252, 170);
+			this.textBoxInn.Mask = "000-000-000-000";
+			this.textBoxInn.Name = "textBoxInn";
+			this.textBoxInn.Size = new System.Drawing.Size(143, 26);
+			this.textBoxInn.TabIndex = 23;
+			// 
+			// phoneCallDataSet15
+			// 
+			this.phoneCallDataSet15.DataSetName = "PhoneCallDataSet15";
+			this.phoneCallDataSet15.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+			// 
+			// subscribersBindingSource2
+			// 
+			this.subscribersBindingSource2.DataMember = "Subscribers";
+			this.subscribersBindingSource2.DataSource = this.phoneCallDataSet15;
+			// 
+			// subscribersTableAdapter2
+			// 
+			this.subscribersTableAdapter2.ClearBeforeFill = true;
+			// 
+			// idSubscriber
+			// 
+			this.idSubscriber.AutoSize = true;
+			this.idSubscriber.Location = new System.Drawing.Point(786, 115);
+			this.idSubscriber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.idSubscriber.Name = "idSubscriber";
+			this.idSubscriber.Size = new System.Drawing.Size(36, 20);
+			this.idSubscriber.TabIndex = 24;
+			this.idSubscriber.Text = "INN";
 			// 
 			// Subscribe
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1002, 693);
+			this.Controls.Add(this.idSubscriber);
+			this.Controls.Add(this.textBoxInn);
+			this.Controls.Add(this.textBoxNumber);
+			this.Controls.Add(this.errorAddress);
+			this.Controls.Add(this.errorINN);
+			this.Controls.Add(this.errorNumber);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.dataGridView1);
 			this.Controls.Add(this.textBoxAddress);
-			this.Controls.Add(this.textBoxRateDay);
-			this.Controls.Add(this.textBoxCity);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
@@ -218,10 +255,8 @@
 			this.Text = "Subscribe";
 			this.Load += new System.EventHandler(this.Subscribe_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.subscribersBindingSource)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.phoneCallDataSet)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.phoneCallDataSet14)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.subscribersBindingSource1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.phoneCallDataSet15)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.subscribersBindingSource2)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -233,20 +268,21 @@
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.DataGridView dataGridView1;
 		private System.Windows.Forms.TextBox textBoxAddress;
-		private System.Windows.Forms.TextBox textBoxRateDay;
-		private System.Windows.Forms.TextBox textBoxCity;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
-		private PhoneCallDataSet phoneCallDataSet;
-		private System.Windows.Forms.BindingSource subscribersBindingSource;
-		private PhoneCallDataSetTableAdapters.SubscribersTableAdapter subscribersTableAdapter;
 		private System.Windows.Forms.DataGridViewTextBoxColumn idSubscriberDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn numberPhoneDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn iNNDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
-		private PhoneCallDataSet14 phoneCallDataSet14;
-		private System.Windows.Forms.BindingSource subscribersBindingSource1;
-		private PhoneCallDataSet14TableAdapters.SubscribersTableAdapter subscribersTableAdapter1;
+		private System.Windows.Forms.Label errorNumber;
+		private System.Windows.Forms.Label errorINN;
+		private System.Windows.Forms.Label errorAddress;
+		private System.Windows.Forms.MaskedTextBox textBoxNumber;
+		private System.Windows.Forms.MaskedTextBox textBoxInn;
+		private PhoneCallDataSet15 phoneCallDataSet15;
+		private System.Windows.Forms.BindingSource subscribersBindingSource2;
+		private PhoneCallDataSet15TableAdapters.SubscribersTableAdapter subscribersTableAdapter2;
+		private System.Windows.Forms.Label idSubscriber;
 	}
 }

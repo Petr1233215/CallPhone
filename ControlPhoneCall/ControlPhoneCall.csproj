@@ -65,6 +65,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\ConversationModel.cs" />
+    <Compile Include="Model\SubscribeModel.cs" />
     <Compile Include="PhoneCallDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -99,6 +100,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PhoneCallDataSet14.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PhoneCallDataSet15.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhoneCallDataSet15.xsd</DependentUpon>
     </Compile>
     <Compile Include="PhoneCallDataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -254,6 +260,17 @@
     </None>
     <None Include="PhoneCallDataSet14.xss">
       <DependentUpon>PhoneCallDataSet14.xsd</DependentUpon>
+    </None>
+    <None Include="PhoneCallDataSet15.xsc">
+      <DependentUpon>PhoneCallDataSet15.xsd</DependentUpon>
+    </None>
+    <None Include="PhoneCallDataSet15.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PhoneCallDataSet15.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PhoneCallDataSet15.xss">
+      <DependentUpon>PhoneCallDataSet15.xsd</DependentUpon>
     </None>
     <None Include="PhoneCallDataSet2.xsc">
       <DependentUpon>PhoneCallDataSet2.xsd</DependentUpon>
