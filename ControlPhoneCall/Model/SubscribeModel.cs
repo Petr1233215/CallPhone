@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ControlPhoneCall.Controllers;
 
 namespace ControlPhoneCall.Model
 {
@@ -12,6 +13,7 @@ namespace ControlPhoneCall.Model
 		private string mobilePhone;
 		private string inn;
 		private string address;
+
 
 		public SubscribeModel(string mobile,string inn,string address)
 		{
@@ -27,8 +29,7 @@ namespace ControlPhoneCall.Model
 			}
 			set
 			{
-				validateItem("sdfsdf");
-				if(validateWithoutLabel(value) && trimUnnecessary(value).Length == 12)
+				if(ValidateController.validateItem(value) && ValidateController.trimUnnecessary(value).Length == 12)
 					mobilePhone = value;
 			}
 		}
@@ -40,7 +41,7 @@ namespace ControlPhoneCall.Model
 			}
 			set
 			{
-				if (validateWithoutLabel(value) && trimUnnecessary(value).Length == 12)
+				if (ValidateController.validateItem(value) && ValidateController.trimUnnecessary(value).Length == 12)
 					inn = value;
 			}
 		}
@@ -52,50 +53,15 @@ namespace ControlPhoneCall.Model
 			}
 			set
 			{
-				if (validateWithoutLabel(value))
+				if (ValidateController.validateItem(value))
 					address = value;
 			}
 		}
 
 		public bool validate(Label labelMob,Label labelInn,Label labelAddress)
 		{
-			bool result = validateItem(MobilePhone,labelMob) && validateItem(INN,labelInn) && validateItem(Address,labelAddress); 
+			bool result = ValidateController.validateItem(MobilePhone,labelMob) && ValidateController.validateItem(INN,labelInn) && ValidateController.validateItem(Address,labelAddress); 
 			return result;
-		}
-
-		private bool validateItem(string item,Label label)
-		{
-			if(!validateWithoutLabel(item))
-			{
-				label.Show();
-				return false;
-			}
-
-			label.Hide();
-			return true;
-		}
-
-		private bool validateItem(string item)
-		{
-			return true;
-		}
-
-		private bool validateWithoutLabel(string item)
-		{
-			if (string.IsNullOrEmpty(item) || string.IsNullOrWhiteSpace(item))
-				return false;
-
-			return true;
-		}
-
-		private string trimUnnecessary(string item)
-		{
-			item = item.Replace("(", "")
-						.Replace(")", "")
-						.Replace("-", "")
-						.Replace(" ", "")
-						.Trim();
-			return item;
 		}
 	}
 }

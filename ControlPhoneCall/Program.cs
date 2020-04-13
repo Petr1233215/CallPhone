@@ -16,7 +16,7 @@ namespace ControlPhoneCall
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new Subscribe());
+			Application.Run(new Conversation());
 		}
 	}
 }

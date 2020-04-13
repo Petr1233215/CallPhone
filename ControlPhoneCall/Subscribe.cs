@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using ControlPhoneCall.Model;
+using ControlPhoneCall.Controllers;
 
 namespace ControlPhoneCall
 {
@@ -18,7 +19,6 @@ namespace ControlPhoneCall
 		{
 			InitializeComponent();
 		}
-
 		
 		string con = @"Data Source=localhost\SQLEXPRESS; Initial Catalog=PhoneCall; Integrated Security=true";
 		string commandString;
@@ -31,6 +31,7 @@ namespace ControlPhoneCall
 
 		private void Subscribe_Load(object sender, EventArgs e)
 		{
+			idSubscriber.Text = "";
 			// TODO: This line of code loads data into the 'phoneCallDataSet15.Subscribers' table. You can move, or remove it, as needed.
 			this.subscribersTableAdapter2.Fill(this.phoneCallDataSet15.Subscribers);
 			//this.phoneCallDataSet.Subscribers.To
@@ -44,7 +45,15 @@ namespace ControlPhoneCall
 			{
 				Cursor.Current = Cursors.WaitCursor;
 				sqlConnection = new SqlConnection(con);
-				if (idSubscriber.Text == "")
+				if (ValidateController.validateItem(idSubscriber.Text))
+				{
+					commandString = $@"UPDATE [dbo].[Subscribers]
+								   SET [NumberPhone] = '{subscribeModel.MobilePhone}'
+									  ,[INN] = '{subscribeModel.INN}'
+									  ,[Address] = '{subscribeModel.Address}'
+								 WHERE IdSubscriber = '{idSubscriber.Text}'";
+				}
+				else
 				{
 					commandString = $@"INSERT INTO [dbo].[Subscribers]
 						   ([NumberPhone]
@@ -54,44 +63,26 @@ namespace ControlPhoneCall
 						    '{subscribeModel.MobilePhone}',
 							'{subscribeModel.INN}',
 							'{subscribeModel.Address}')";
-
-					try
-					{
-						sqlConnection.Open();
-					}
-					catch (Exception)
-					{
-
-						MessageBox.Show("Не удалось подключиться");
-					}
-
-					command = new SqlCommand(commandString, sqlConnection);
-
-					command.ExecuteNonQuery();
-					this.subscribersTableAdapter2.Fill(this.phoneCallDataSet15.Subscribers);
 				}
-				else
+
+				try
 				{
-					commandString = $@"UPDATE [dbo].[Subscribers]
-								   SET [NumberPhone] = '{subscribeModel.MobilePhone}'
-									  ,[INN] = '{subscribeModel.INN}'
-									  ,[Address] = '{subscribeModel.Address}'
-								 WHERE IdSubscriber = '{idSubscriber.Text}'";
-					try
-					{
-						sqlConnection.Open();
-					}
-					catch (Exception)
-					{
-
-						MessageBox.Show("Не удалось подключиться");
-					}
-					command = new SqlCommand(commandString, sqlConnection);
-					command.ExecuteNonQuery();
-					this.subscribersTableAdapter2.Fill(this.phoneCallDataSet15.Subscribers);
+					sqlConnection.Open();
 				}
+				catch (Exception)
+				{
+
+					MessageBox.Show("Не удалось подключиться");
+				}
+
+
+				command = new SqlCommand(commandString, sqlConnection);
+				command.ExecuteNonQuery();
+				this.subscribersTableAdapter2.Fill(this.phoneCallDataSet15.Subscribers);
 
 				idSubscriber.Text = "";
+				ValidateController.CleanerTextBox(textBoxAddress,textBoxInn,textBoxNumber);
+				Cursor.Current = Cursors.Default;
 			}
 			else
 			{
@@ -128,6 +119,36 @@ namespace ControlPhoneCall
 			textBoxAddress.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
 			textBoxInn.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
 			textBoxNumber.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+		}
+
+		private void Button2_Click(object sender, EventArgs e)
+		{
+			if (ValidateController.validateItem(idSubscriber.Text))
+			{
+				sqlConnection = new SqlConnection(con);
+				commandString = $@"DELETE FROM [dbo].[Subscribers]
+									WHERE IdSubscriber = '{idSubscriber.Text}'";
+				try
+				{
+					sqlConnection.Open();
+				}
+				catch (Exception)
+				{
+
+					MessageBox.Show("Не удалось подключиться");
+				}
+				command = new SqlCommand(commandString, sqlConnection);
+				command.ExecuteNonQuery();
+				this.subscribersTableAdapter2.Fill(this.phoneCallDataSet15.Subscribers);
+
+				idSubscriber.Text = "";
+				ValidateController.CleanerTextBox(textBoxAddress, textBoxInn, textBoxNumber);
+				Cursor.Current = Cursors.Default;
+			}
+			else
+			{
+				MessageBox.Show("Выберите строку для удаления");
+			}
 		}
 	}
 

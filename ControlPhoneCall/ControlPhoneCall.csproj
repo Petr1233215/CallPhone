@@ -52,6 +52,7 @@
     <Compile Include="City.Designer.cs">
       <DependentUpon>City.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ValidateController.cs" />
     <Compile Include="Conversation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +65,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\CityModel.cs" />
     <Compile Include="Model\ConversationModel.cs" />
     <Compile Include="Model\SubscribeModel.cs" />
     <Compile Include="PhoneCallDataSet.Designer.cs">
@@ -105,6 +107,26 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PhoneCallDataSet15.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PhoneCallDataSet16.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhoneCallDataSet16.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PhoneCallDataSet17.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhoneCallDataSet17.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PhoneCallDataSet18.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhoneCallDataSet18.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PhoneCallDataSet19.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhoneCallDataSet19.xsd</DependentUpon>
     </Compile>
     <Compile Include="PhoneCallDataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -271,6 +293,50 @@
     </None>
     <None Include="PhoneCallDataSet15.xss">
       <DependentUpon>PhoneCallDataSet15.xsd</DependentUpon>
+    </None>
+    <None Include="PhoneCallDataSet16.xsc">
+      <DependentUpon>PhoneCallDataSet16.xsd</DependentUpon>
+    </None>
+    <None Include="PhoneCallDataSet16.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PhoneCallDataSet16.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PhoneCallDataSet16.xss">
+      <DependentUpon>PhoneCallDataSet16.xsd</DependentUpon>
+    </None>
+    <None Include="PhoneCallDataSet17.xsc">
+      <DependentUpon>PhoneCallDataSet17.xsd</DependentUpon>
+    </None>
+    <None Include="PhoneCallDataSet17.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PhoneCallDataSet17.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PhoneCallDataSet17.xss">
+      <DependentUpon>PhoneCallDataSet17.xsd</DependentUpon>
+    </None>
+    <None Include="PhoneCallDataSet18.xsc">
+      <DependentUpon>PhoneCallDataSet18.xsd</DependentUpon>
+    </None>
+    <None Include="PhoneCallDataSet18.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PhoneCallDataSet18.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PhoneCallDataSet18.xss">
+      <DependentUpon>PhoneCallDataSet18.xsd</DependentUpon>
+    </None>
+    <None Include="PhoneCallDataSet19.xsc">
+      <DependentUpon>PhoneCallDataSet19.xsd</DependentUpon>
+    </None>
+    <None Include="PhoneCallDataSet19.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PhoneCallDataSet19.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PhoneCallDataSet19.xss">
+      <DependentUpon>PhoneCallDataSet19.xsd</DependentUpon>
     </None>
     <None Include="PhoneCallDataSet2.xsc">
       <DependentUpon>PhoneCallDataSet2.xsd</DependentUpon>
