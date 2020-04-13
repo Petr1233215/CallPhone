@@ -26,21 +26,12 @@ namespace ControlPhoneCall
 		private void Conversation_Load(object sender, EventArgs e)
 		{
 			// TODO: This line of code loads data into the 'phoneCallDataSet12.Conversation' table. You can move, or remove it, as needed.
-			this.conversationTableAdapter.Fill(this.phoneCallDataSet12.Conversation);
-
-			var phoneCall = this.phoneCallDataSet12.Conversation.Select(elem => elem.IdCity).ToList();
-
-
-			List<ConversationModel> conversationModel = this.phoneCallDataSet12.Conversation.Select(element => new ConversationModel{idCity = element.IdCity,countMinutes = element.CountMinutes}).ToList();
-
-			
-
-			foreach(var phone in phoneCall)
-			{
-				label5.Text += $"{phone} ";
-			}
-			string commandString = @"SELECT   Conversation.IdConversation, Conversation.IdSubScriber, Conversation.IdCity, Conversation.Date, Conversation.CountMinutes, Conversation.TimesOfDay, City.NameCity
-							FROM Conversation INNER JOIN City ON Conversation.IdCity = City.IdCity";
+			string commandString = @"SELECT        Conversation.IdConversation, Conversation.IdSubScriber, Conversation.IdCity, Conversation.Date, Conversation.CountMinutes, 
+						Conversation.TimesOfDay, Conversation.PriceConverstation, Subscribers.NumberPhone, 
+									 City.NameCity, City.RateDay, City.RateNigth, Subscribers.INN, Subscribers.Address
+						FROM            City INNER JOIN
+												 Conversation ON City.IdCity = Conversation.IdCity INNER JOIN
+												 Subscribers ON Conversation.IdSubScriber = Subscribers.IdSubscriber";
 			string con = @"Data Source=localhost\SQLEXPRESS; Initial Catalog=PhoneCall; Integrated Security=true";
 			
 			SqlConnection sqlConnection = new SqlConnection(con);
@@ -61,22 +52,12 @@ namespace ControlPhoneCall
 			SqlDataAdapter adapter = new SqlDataAdapter(command);
 
 			adapter.Fill(tableConversation);
-			dataGridView2.DataSource = tableConversation;
+			dataGridView1.DataSource = tableConversation;
 
-			
+			MessageBox.Show(tableConversation.Rows[0][0].ToString());
 		}
 
-		private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-		{
-
-		}
-
-		private void DataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-		{
-
-		}
-
-		private void DataGridView1_CellContentClick_2(object sender, DataGridViewCellEventArgs e)
+		private void Button1_Click(object sender, EventArgs e)
 		{
 
 		}

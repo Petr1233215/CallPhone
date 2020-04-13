@@ -28,7 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
 			this.label4 = new System.Windows.Forms.Label();
 			this.button1 = new System.Windows.Forms.Button();
 			this.textBoxAddress = new System.Windows.Forms.TextBox();
@@ -37,26 +36,9 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.comboBox1 = new System.Windows.Forms.ComboBox();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.phoneCallDataSet12 = new ControlPhoneCall.PhoneCallDataSet12();
-			this.conversationBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.conversationTableAdapter = new ControlPhoneCall.PhoneCallDataSet12TableAdapters.ConversationTableAdapter();
-			this.idConversationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.idSubScriberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.idCityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.countMinutesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.timesOfDayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.phoneCallDataSet1 = new ControlPhoneCall.PhoneCallDataSet();
-			this.dataGridView2 = new System.Windows.Forms.DataGridView();
 			this.label5 = new System.Windows.Forms.Label();
-			this.dataGridView3 = new System.Windows.Forms.DataGridView();
+			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.phoneCallDataSet12)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.conversationBindingSource)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.phoneCallDataSet1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label4
@@ -72,12 +54,13 @@
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(848, 280);
+			this.button1.Location = new System.Drawing.Point(717, 443);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(127, 64);
 			this.button1.TabIndex = 25;
 			this.button1.Text = "Сохранить";
 			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.Button1_Click);
 			// 
 			// textBoxAddress
 			// 
@@ -131,88 +114,6 @@
 			this.comboBox1.Size = new System.Drawing.Size(121, 28);
 			this.comboBox1.TabIndex = 27;
 			// 
-			// dataGridView1
-			// 
-			this.dataGridView1.AutoGenerateColumns = false;
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idConversationDataGridViewTextBoxColumn,
-            this.idSubScriberDataGridViewTextBoxColumn,
-            this.idCityDataGridViewTextBoxColumn,
-            this.dateDataGridViewTextBoxColumn,
-            this.countMinutesDataGridViewTextBoxColumn,
-            this.timesOfDayDataGridViewTextBoxColumn});
-			this.dataGridView1.DataSource = this.conversationBindingSource;
-			this.dataGridView1.Location = new System.Drawing.Point(93, 280);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.Size = new System.Drawing.Size(642, 150);
-			this.dataGridView1.TabIndex = 28;
-			this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick_2);
-			// 
-			// phoneCallDataSet12
-			// 
-			this.phoneCallDataSet12.DataSetName = "PhoneCallDataSet12";
-			this.phoneCallDataSet12.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-			// 
-			// conversationBindingSource
-			// 
-			this.conversationBindingSource.DataMember = "Conversation";
-			this.conversationBindingSource.DataSource = this.phoneCallDataSet12;
-			// 
-			// conversationTableAdapter
-			// 
-			this.conversationTableAdapter.ClearBeforeFill = true;
-			// 
-			// idConversationDataGridViewTextBoxColumn
-			// 
-			this.idConversationDataGridViewTextBoxColumn.DataPropertyName = "IdConversation";
-			this.idConversationDataGridViewTextBoxColumn.HeaderText = "IdConversation";
-			this.idConversationDataGridViewTextBoxColumn.Name = "idConversationDataGridViewTextBoxColumn";
-			this.idConversationDataGridViewTextBoxColumn.ReadOnly = true;
-			// 
-			// idSubScriberDataGridViewTextBoxColumn
-			// 
-			this.idSubScriberDataGridViewTextBoxColumn.DataPropertyName = "IdSubScriber";
-			this.idSubScriberDataGridViewTextBoxColumn.HeaderText = "IdSubScriber";
-			this.idSubScriberDataGridViewTextBoxColumn.Name = "idSubScriberDataGridViewTextBoxColumn";
-			// 
-			// idCityDataGridViewTextBoxColumn
-			// 
-			this.idCityDataGridViewTextBoxColumn.DataPropertyName = "IdCity";
-			this.idCityDataGridViewTextBoxColumn.HeaderText = "IdCity";
-			this.idCityDataGridViewTextBoxColumn.Name = "idCityDataGridViewTextBoxColumn";
-			// 
-			// dateDataGridViewTextBoxColumn
-			// 
-			this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
-			this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
-			this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
-			// 
-			// countMinutesDataGridViewTextBoxColumn
-			// 
-			this.countMinutesDataGridViewTextBoxColumn.DataPropertyName = "CountMinutes";
-			this.countMinutesDataGridViewTextBoxColumn.HeaderText = "CountMinutes";
-			this.countMinutesDataGridViewTextBoxColumn.Name = "countMinutesDataGridViewTextBoxColumn";
-			// 
-			// timesOfDayDataGridViewTextBoxColumn
-			// 
-			this.timesOfDayDataGridViewTextBoxColumn.DataPropertyName = "TimesOfDay";
-			this.timesOfDayDataGridViewTextBoxColumn.HeaderText = "TimesOfDay";
-			this.timesOfDayDataGridViewTextBoxColumn.Name = "timesOfDayDataGridViewTextBoxColumn";
-			// 
-			// phoneCallDataSet1
-			// 
-			this.phoneCallDataSet1.DataSetName = "PhoneCallDataSet";
-			this.phoneCallDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-			// 
-			// dataGridView2
-			// 
-			this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView2.Location = new System.Drawing.Point(93, 500);
-			this.dataGridView2.Name = "dataGridView2";
-			this.dataGridView2.Size = new System.Drawing.Size(240, 150);
-			this.dataGridView2.TabIndex = 29;
-			// 
 			// label5
 			// 
 			this.label5.AutoSize = true;
@@ -223,23 +124,21 @@
 			this.label5.TabIndex = 30;
 			this.label5.Text = "Выбор города";
 			// 
-			// dataGridView3
+			// dataGridView1
 			// 
-			this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView3.Location = new System.Drawing.Point(495, 500);
-			this.dataGridView3.Name = "dataGridView3";
-			this.dataGridView3.Size = new System.Drawing.Size(240, 150);
-			this.dataGridView3.TabIndex = 31;
+			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView1.Location = new System.Drawing.Point(193, 357);
+			this.dataGridView1.Name = "dataGridView1";
+			this.dataGridView1.Size = new System.Drawing.Size(371, 150);
+			this.dataGridView1.TabIndex = 31;
 			// 
 			// Conversation
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1200, 692);
-			this.Controls.Add(this.dataGridView3);
-			this.Controls.Add(this.label5);
-			this.Controls.Add(this.dataGridView2);
 			this.Controls.Add(this.dataGridView1);
+			this.Controls.Add(this.label5);
 			this.Controls.Add(this.comboBox1);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.button1);
@@ -254,11 +153,6 @@
 			this.Text = "Conversation";
 			this.Load += new System.EventHandler(this.Conversation_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.phoneCallDataSet12)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.conversationBindingSource)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.phoneCallDataSet1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -274,19 +168,7 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.ComboBox comboBox1;
-		private System.Windows.Forms.DataGridView dataGridView1;
-		private PhoneCallDataSet12 phoneCallDataSet12;
-		private System.Windows.Forms.BindingSource conversationBindingSource;
-		private PhoneCallDataSet12TableAdapters.ConversationTableAdapter conversationTableAdapter;
-		private System.Windows.Forms.DataGridViewTextBoxColumn idConversationDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn idSubScriberDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn idCityDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn countMinutesDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn timesOfDayDataGridViewTextBoxColumn;
-		private PhoneCallDataSet phoneCallDataSet1;
-		private System.Windows.Forms.DataGridView dataGridView2;
 		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.DataGridView dataGridView3;
+		private System.Windows.Forms.DataGridView dataGridView1;
 	}
 }
