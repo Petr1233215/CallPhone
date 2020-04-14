@@ -133,6 +133,31 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PhoneCallDataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="PhoneCallDataSet20.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhoneCallDataSet20.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PhoneCallDataSet21.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhoneCallDataSet21.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PhoneCallDataSet22.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhoneCallDataSet22.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PhoneCallDataSet23.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhoneCallDataSet23.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PhoneCallDataSet24.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhoneCallDataSet24.xsd</DependentUpon>
+    </Compile>
     <Compile Include="PhoneCallDataSet3.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -348,6 +373,61 @@
     </None>
     <None Include="PhoneCallDataSet2.xss">
       <DependentUpon>PhoneCallDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="PhoneCallDataSet20.xsc">
+      <DependentUpon>PhoneCallDataSet20.xsd</DependentUpon>
+    </None>
+    <None Include="PhoneCallDataSet20.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PhoneCallDataSet20.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PhoneCallDataSet20.xss">
+      <DependentUpon>PhoneCallDataSet20.xsd</DependentUpon>
+    </None>
+    <None Include="PhoneCallDataSet21.xsc">
+      <DependentUpon>PhoneCallDataSet21.xsd</DependentUpon>
+    </None>
+    <None Include="PhoneCallDataSet21.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PhoneCallDataSet21.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PhoneCallDataSet21.xss">
+      <DependentUpon>PhoneCallDataSet21.xsd</DependentUpon>
+    </None>
+    <None Include="PhoneCallDataSet22.xsc">
+      <DependentUpon>PhoneCallDataSet22.xsd</DependentUpon>
+    </None>
+    <None Include="PhoneCallDataSet22.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PhoneCallDataSet22.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PhoneCallDataSet22.xss">
+      <DependentUpon>PhoneCallDataSet22.xsd</DependentUpon>
+    </None>
+    <None Include="PhoneCallDataSet23.xsc">
+      <DependentUpon>PhoneCallDataSet23.xsd</DependentUpon>
+    </None>
+    <None Include="PhoneCallDataSet23.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PhoneCallDataSet23.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PhoneCallDataSet23.xss">
+      <DependentUpon>PhoneCallDataSet23.xsd</DependentUpon>
+    </None>
+    <None Include="PhoneCallDataSet24.xsc">
+      <DependentUpon>PhoneCallDataSet24.xsd</DependentUpon>
+    </None>
+    <None Include="PhoneCallDataSet24.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PhoneCallDataSet24.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PhoneCallDataSet24.xss">
+      <DependentUpon>PhoneCallDataSet24.xsd</DependentUpon>
     </None>
     <None Include="PhoneCallDataSet3.xsc">
       <DependentUpon>PhoneCallDataSet3.xsd</DependentUpon>

@@ -77,5 +77,15 @@ namespace ControlPhoneCall.Controllers
 				return Convert.ToInt32(s);
 			return null;
 		}
+
+		public static int? ConvertStringToInt(string num)
+		{
+			return validateItem(num) ? (int?)Convert.ToInt32(num) : null;
+		}
+
+		public static double? ConvertStringToDoube(string num)
+		{
+			return validateItem(num) ? (double?)Convert.ToDouble(num) : null;
+		}
 	}
 }
